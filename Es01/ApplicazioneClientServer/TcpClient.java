@@ -53,7 +53,7 @@ public class TcpClient {
 			socket.close();
 			//scanner.close();			
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println(e); 
 		}
 	}
 }
