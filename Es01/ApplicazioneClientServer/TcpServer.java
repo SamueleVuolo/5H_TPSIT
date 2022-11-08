@@ -32,41 +32,51 @@ public class TcpServer {
 				clientMsg = inStream.readUTF();
 				System.out.println("Server: ricevuto messaggio " + clientMsg );
 				
+				voc=0;
+				cons=0;
+				carsp=0;
+				
+				System.out.println("La lunghezza del messaggio: " + clientMsg.length() + " caratteri");
+				for(int i=0; i<clientMsg.length(); i++) 
+				{
+					if(clientMsg.charAt(i)==('a')||clientMsg.charAt(i)==('e')||clientMsg.charAt(i)==('i')||clientMsg.charAt(i)==('o')||clientMsg.charAt(i)==('u'))
+						voc++;
+					else if(clientMsg.charAt(i)==('!')||clientMsg.charAt(i)==(' ')||clientMsg.charAt(i)==('?')||clientMsg.charAt(i)==(':')||clientMsg.charAt(i)==(';')||clientMsg.charAt(i)==(','))
+							carsp++;
+						
+						else
+							cons++;
+				}
+				
+				
+				
+				System.out.println("\nServer: vocali " + voc);
+				System.out.println("Server: consonanti " + cons);
+				System.out.println("Server: caratteri speciali " + carsp);
+				
 				//Invio dati su stream di rete
 				outStream.writeUTF("Echo from server : "         + clientMsg);
 				outStream.flush();
 				System.out.println("Server: invio messaggio "    + clientMsg );
-			}
-			
-			voc=0;
-			cons=0;
-			carsp=0;
-			
-			System.out.println("La lunghezza del messaggio: " + clientMsg.length() + " caratteri");
-			for(int i=0; i<clientMsg.length(); i++) 
-			{
-				if(clientMsg.charAt(i)==('a')||clientMsg.charAt(i)==('e')||clientMsg.charAt(i)==('i')||clientMsg.charAt(i)==('o')||clientMsg.charAt(i)==('u'))
-					voc++;
-				else 
-					if(clientMsg.charAt(i)==('!')||clientMsg.charAt(i)==(' ')||clientMsg.charAt(i)==('?')||clientMsg.charAt(i)==(':')||clientMsg.charAt(i)==(';')||clientMsg.charAt(i)==(','))
-						carsp++;
+				
+				if(cons==voc%2) 
+				{	
+					clientMsg.equals("quit");
+					// Close resources
+					serverSocket.close();
+					clientSocket.close();
+					inStream.close();
+					outStream.close();
 					
-					else
-						cons++;
+				}
 			}
 			
-			System.out.println("Server: vocali " + voc);
-			System.out.println("Server: consonanti " + cons);
-			System.out.println("Server: caratteri speciali " + carsp);
 			
-			
-			
-
-			// Close resources
+			/* Close resources
 			serverSocket.close();
 			clientSocket.close();
 			inStream.close();
-			outStream.close();
+			outStream.close();*/
 
 		} catch (Exception e) {
 			System.out.println(e);
