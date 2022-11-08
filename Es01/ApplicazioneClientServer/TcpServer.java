@@ -59,24 +59,19 @@ public class TcpServer {
 				outStream.flush();
 				System.out.println("Server: invio messaggio "    + clientMsg );
 				
-				if(cons==voc%2) 
+				if(cons%voc==0) 
 				{	
-					clientMsg.equals("quit");
-					// Close resources
-					serverSocket.close();
-					clientSocket.close();
-					inStream.close();
-					outStream.close();
-					
+					System.out.println("Spegnimento del server in corso...");
+					clientMsg="quit";
 				}
 			}
 			
 			
-			/* Close resources
+			// Close resources
 			serverSocket.close();
 			clientSocket.close();
 			inStream.close();
-			outStream.close();*/
+			outStream.close();
 
 		} catch (Exception e) {
 			System.out.println(e);
