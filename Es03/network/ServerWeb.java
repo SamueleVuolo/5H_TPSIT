@@ -11,7 +11,7 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class TcpServer {
+public class ServerWeb {
 	public static void main(String[] args) throws Exception {
 		
 		final int SERVER_PORT=8765;
