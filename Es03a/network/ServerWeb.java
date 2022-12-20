@@ -3,7 +3,7 @@
  * Lettura dati multi riga provenienti dal client
  * 
  * from folder network/..
- * javac network/TcpServer.java; java network.TcpServer 
+ * javac network/ServerWeb.java; java network.ServerWeb 
  */
 package network;
 
@@ -45,7 +45,7 @@ public class ServerWeb {
 				//clientMsg += "Connection: close\r\n";
 				//clientMsg += "Content-Type: text/plain\r\n";
 				clientMsg += "\r\n";
-				clientMsg += "Saluti dal web server Java";
+				clientMsg += "Saluti da Samuele Vuolo";
 				outStream.write(clientMsg.getBytes());
 				outStream.flush();
 
