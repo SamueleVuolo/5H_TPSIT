@@ -4,6 +4,7 @@
   <title>Tavola Pitagorica</title>
 </head>
 <body>
+<h1>TAVOLA PITAGORICA - Vuolo Samuele 5H</h1>
 <table border=1>
 		<%
     	for(int i=1; i<=10; i++)
